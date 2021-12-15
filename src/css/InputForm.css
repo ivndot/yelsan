@@ -1,0 +1,43 @@
+.input {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.3rem;
+  /* background-color: aquamarine; */
+}
+
+.input__label {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--colorFont);
+  margin-bottom: 0.5rem;
+}
+
+.input__field {
+  display: block;
+  width: 100%;
+  min-height: 2rem;
+  height: 2.5rem;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  border: 1.5px solid white;
+  /* border: none; */
+  outline: none;
+  border-radius: 0.4rem;
+}
+
+.input__field:focus {
+  transition: ease 0.2s;
+  border: 1.5px solid var(--accent);
+}
+
+.input--inline {
+  display: inline;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
