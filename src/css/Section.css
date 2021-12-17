@@ -1,0 +1,15 @@
+.section {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  background-color: var(--primaryLight);
+  border-radius: 0.4rem;
+}
+
+.section__description {
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: var(--fontFamilyTitle);
+  text-align: justify;
+  color: var(--primary);
+}

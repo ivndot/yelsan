@@ -1,0 +1,33 @@
+.answer {
+  width: 100%;
+  height: auto;
+  padding-bottom: 0.7rem;
+  /*flexbox*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answer:last-child {
+  padding-bottom: 0;
+}
+
+.answer__label {
+  font-size: 0.9rem;
+  font-weight: 510;
+}
+
+.answer__select {
+  width: 6rem;
+  height: 2rem;
+  text-align: center;
+  border: 1.5px solid white;
+  outline: none;
+  border-radius: 0.4rem;
+  background-color: white;
+}
+
+.answer__select:focus {
+  transition: ease 0.2s;
+  border: 1.5px solid var(--accent);
+}

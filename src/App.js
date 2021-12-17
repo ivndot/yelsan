@@ -1,12 +1,12 @@
 import "./App.css";
 //components
-import Format from "./components/Format";
+import FormatOne from "./components/FormatOne";
 
 function App() {
   return (
     <div>
       <h1>App root</h1>
-      <Format />
+      <FormatOne />
     </div>
   );
 }
