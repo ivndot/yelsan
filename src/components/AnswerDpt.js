@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 //nanoid
 import { nanoid } from "nanoid";
 //styles
@@ -14,7 +14,7 @@ const AnswerDpt = (props) => {
       </label>
       <select name={name} id={name} value={value} onChange={handleChange} className="answer__select">
         {optionValues.map((optionValue) => (
-          <option key={nanoid(5)} value={optionValue}>
+          <option key={nanoid(3)} value={optionValue}>
             {optionValue}
           </option>
         ))}
@@ -23,4 +23,4 @@ const AnswerDpt = (props) => {
   );
 };
 
-export default AnswerDpt;
+export default memo(AnswerDpt);

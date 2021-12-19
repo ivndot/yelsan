@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import FormatHeader from "./FormatHeader";
 import Question from "./Question";
 import Section from "./Section";
+import Loading from "./Loading";
 import { addFormat1Answers } from "../util/requests";
 import { generateQuestionObjects, generateFinalTime, getFinalRating } from "../util/util";
 //styles
@@ -24,14 +25,14 @@ const initialPointsDepartments = {
 
 //total points for each department
 const totalPointsDepartments = {
-  carnes: 182,
-  alimentosPreparados: 192,
-  panaderiaTortilleria: 188,
-  salchichoneria: 182,
-  frutasVerduras: 153,
-  pescados: 182,
+  carnes: 202,
+  alimentosPreparados: 212,
+  panaderiaTortilleria: 208,
+  salchichoneria: 202,
+  frutasVerduras: 186,
+  pescados: 202,
   recibo: 112,
-  cisterna: 76,
+  cisterna: 86,
   ctoBasura: 47,
 };
 
@@ -44,7 +45,7 @@ const initialValues = {
   noSucursal: "",
   nombreGerencia: "",
   nombreAIS: "",
-  preguntas: generateQuestionObjects(35, initialPointsDepartments),
+  preguntas: generateQuestionObjects(40, initialPointsDepartments),
   puntosObtenidos: {},
   calificacionDpts: {},
   calificacionTotal: "",
@@ -151,6 +152,186 @@ const questionsSection1 = [
       "15.- ¿Alimentos y recipientes colocados en anaqueles y tarimas a 15 cm sobre el nivel del piso, 10 cm de pared y techo?",
     points: 3,
     filterDepartments: "Cisterna,Cto. de basura",
+  },
+  {
+    index: 15,
+    question:
+      "16.- ¿Los  ingredientes,  materias  primas  y  productos  terminados  se encuentran  identificados y  llevan a  cabo el sistema PEPS dándoles una rotación adecuada?",
+    points: 6,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 16,
+    question: "17.- ¿Los Empleados tienen una buena Higiene Personal?",
+    points: 8,
+    filterDepartments: "Cisterna,Cto. de basura",
+  },
+  {
+    index: 17,
+    question: "18.- ¿Los Empleados evitan salir de las áreas de proceso con su bata o mandil?",
+    points: 6,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 18,
+    question: "19.- ¿Existe evidencia de consumo de alimentos o tabaco?",
+    points: 3,
+    filterDepartments: "Cto. de basura",
+  },
+  {
+    index: 19,
+    question: "20.- ¿Los Empleados se lavan las manos adecuadamente?",
+    points: 3,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 20,
+    question:
+      "21.- ¿El  departamento  cuenta  con  una  tarja  asignada  para  el  lavado  de  manos  con  agua  potable,  toallas desechables, jabón desinfectante, cepillo en solución desinfectante, bote de basura exclusivo con bolsa y tapa?",
+    points: 3,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 21,
+    question:
+      "22.- ¿El  departamento  cuenta  con  tarjas  o  recipientes  que  garanticen  que  se  realizan  los  tres  pasos  para  el lavado y sanitización de utensilios y partes removibles de los equipos?",
+    points: 3,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 22,
+    question:
+      "23.- ¿Los equipos o superficies de trabajo se encuentran en buen estado sin amarres, libres de oxidación, pintura (descarapelada),  cuñas o arreglos provisionales?",
+    points: 3,
+    filterDepartments: "Cto. de basura",
+  },
+  {
+    index: 23,
+    question:
+      "24.- ¿Las puertas, cortinas de metal, mallas en ventanas o respiraderos, cortinas de aire, guardapolvos o cortinas hawaianas están en buen estado?",
+    points: 3,
+    filterDepartments: "",
+  },
+  {
+    index: 24,
+    question:
+      "25.- ¿Los  Empleados  saben  como  tomar  temperaturas  en  los  alimentos  en  vitrinas,  cámaras,  recibo,  etc adecuadamente y cada departamento cuenta con un termómetro?",
+    points: 6,
+    filterDepartments: "Cisterna,Cto. de basura",
+  },
+  {
+    index: 25,
+    question:
+      "26.- ¿Los  alimentos  fríos  se  mantienen  a  temperaturas  por  debajo  de  los  5  C  en equipos  de almacenamiento, exhibición y venta (vitrinas, cámaras, refrigeradores, arcones promocionales, etc.)? En el departamento de Frutas y Verduras,  la temperatura máxima será 10 ° C, solo en vitrinas y cámaras de conservación.",
+    points: 10,
+    filterDepartments: "Cisterna,Cto. de basura",
+  },
+  {
+    index: 26,
+    question:
+      "27.- ¿Los alimentos congelados se mantienen mínimo a -18 C en equipos de almacenamiento, exhibición y venta (vitrinas, cámaras, arcones promocionales, etc.)?",
+    points: 10,
+    filterDepartments: "Frutas y verduras,Cisterna,Cto. de basura",
+  },
+  {
+    index: 27,
+    question:
+      "28.- ¿Los alimentos calientes se mantienen mínimo a   60 C en equipos de almacenamiento, exhibición  y venta (vitrinas, baños maría, etc.)?",
+    points: 10,
+    filterDepartments:
+      "Carnes,Panadería y tortillería,Salchichonería,Frutas y verduras,Pescados,Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 28,
+    question: "29.- ¿Los botes de basura se encuentran limpios, con tapa y bolsa de plástico.",
+    points: 3,
+    filterDepartments: "Cisterna",
+  },
+  {
+    index: 29,
+    question:
+      "30.- ¿Existe evidencia de plaga (roedores, excretas, cucarachas, moscas, grillos, pájaros, chapulines, etc)?",
+    points: 8,
+    filterDepartments: "",
+  },
+  {
+    index: 30,
+    question:
+      "31.- ¿El  departamento  presenta  fallas  estructurales  en  paredes,  techos,  pisos,  tubería  que  ayuden  a  que  las plagas se aniden?",
+    points: 3,
+    filterDepartments: "",
+  },
+];
+
+//question objects for section 2
+const questionsSection2 = [
+  {
+    index: 31,
+    question:
+      "32.- ¿Se llevan adecuadamente las bitácoras, programas o registros que soporten adecuadamente las actividades realizadas? Y se almacenan en carpetas debidamente identificadas y resguardadas?",
+    points: 10,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 32,
+    question:
+      "32(a).- ¿Los  empleados  registran  en  los  programas  de  limpieza  las  actividades  que  realizan  y  cuentan  con  los documentos que avalen está información?.",
+    points: 10,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 33,
+    question:
+      "32(b).- ¿Los  empleados  llenan  adecuadamente  las  bitácoras  de  temperaturas  que  corresponden  a  cada departamento?.",
+    points: 10,
+    filterDepartments: "Recibo,Cisterna,Cto. de basura",
+  },
+  {
+    index: 34,
+    question:
+      "32(c).- ¿Se  lleva  a  cabo  el  registro  de  temperaturas  y  características  organolépticas  de  los  alimentos  en  las bitácoras correspondientes al momento de la recepción en la unidad?",
+    points: 10,
+    filterDepartments:
+      "Carnes,Alimentos Preparados,Panadería y tortillería,Salchichonería,Frutas y verduras,Pescados,Cisterna,Cto. de basura",
+  },
+  {
+    index: 35,
+    question:
+      "32(d).- ¿Se lleva a cabo el registro de limpieza y desinfección de la cisterna en la bitácora correspondiente?",
+    points: 10,
+    filterDepartments:
+      "Carnes,Alimentos Preparados,Panadería y tortillería,Salchichonería,Frutas y verduras,Pescados,Recibo,Cto. de basura",
+  },
+  {
+    index: 36,
+    question: "32(e).- ¿Se llevan  a cabo los análisis del Agua Potable y éstos son satisfactoríos?",
+    points: 10,
+    filterDepartments:
+      "Carnes,Alimentos Preparados,Panadería y tortillería,Salchichonería,Frutas y verduras,Pescados,Recibo,Cto. de basura",
+  },
+  {
+    index: 37,
+    question:
+      "33.- ¿El departamento cuenta con los carteles de Acreditación en el MHA y el de Calificaciones obtenidas en la auditoría; actualizados y en buen estado?",
+    points: 6,
+    filterDepartments: "",
+  },
+];
+
+//questioin objects for section 3
+const questionsSection3 = [
+  {
+    index: 38,
+    question:
+      "34.- ¿El  personal  de  Gerencia  acompaña  durante  todo  el  recorrido  de  la  revisión  de  Auditoría  de  Seguridad Alimentaria al Asesor?",
+    points: 10,
+    filterDepartments: "",
+  },
+  {
+    index: 39,
+    question: "35.- ¿El personal de Gerencia realiza el plan de acción de la visita de auditoría?",
+    points: 8,
+    filterDepartments: "",
   },
 ];
 
@@ -263,42 +444,78 @@ const FormatOne = () => {
   });
 
   return (
-    <div className="format">
-      <form onSubmit={formik.handleSubmit}>
-        {/* format header */}
-        <FormatHeader
-          format3={false}
-          values={formik.values}
-          handleChange={formik.handleChange}
-          formik={formik}
-        />
-        {/* 1 section */}
-        <Section description="I. Buenas pr&aacute;cticas de higiene y sanidad" />
-        {/* questions */}
-        {questionsSection1.map((quesObj, idx) => (
-          <Question
-            key={idx}
-            format1
-            index={quesObj.index}
-            question={quesObj.question}
-            description="Selecciona un puntaje para cada departamento"
-            points={quesObj.points}
-            filterDepartments={quesObj.filterDepartments}
-            values={formik.values.preguntas}
-            handleChange={formik.handleChange}
-            formik={formik}
-          />
-        ))}
-        {/* 2 section */}
-        <Section description="II. Control de registros" />
-
-        <button type="submit" className="btnForm">
-          Enviar
-        </button>
-
-        <div>{isLoading ? "Loading..." : null}</div>
-      </form>
-    </div>
+    <>
+      {/* loading modal */}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="format">
+          <form onSubmit={formik.handleSubmit}>
+            {/* format header */}
+            <FormatHeader
+              format3={false}
+              values={formik.values}
+              handleChange={formik.handleChange}
+              formik={formik}
+            />
+            {/* 1 section */}
+            <Section description="I. Buenas pr&aacute;cticas de higiene y sanidad" />
+            {/* questions */}
+            {questionsSection1.map((quesObj, idx) => (
+              <Question
+                key={idx}
+                format1
+                index={quesObj.index}
+                question={quesObj.question}
+                description="Selecciona un puntaje para cada departamento"
+                points={quesObj.points}
+                filterDepartments={quesObj.filterDepartments}
+                values={formik.values.preguntas}
+                handleChange={formik.handleChange}
+                formik={formik}
+              />
+            ))}
+            {/* 2 section */}
+            <Section description="II. Control de registros" />
+            {/* questions */}
+            {questionsSection2.map((quesObj, idx) => (
+              <Question
+                key={idx}
+                format1
+                index={quesObj.index}
+                question={quesObj.question}
+                description="Selecciona un puntaje para cada departamento"
+                points={quesObj.points}
+                filterDepartments={quesObj.filterDepartments}
+                values={formik.values.preguntas}
+                handleChange={formik.handleChange}
+                formik={formik}
+              />
+            ))}
+            {/* 3 section */}
+            <Section description="III. Participación gerencial por departamento" />
+            {/* questions */}
+            {questionsSection3.map((quesObj, idx) => (
+              <Question
+                key={idx}
+                format1
+                index={quesObj.index}
+                question={quesObj.question}
+                description="Selecciona un puntaje para cada departamento"
+                points={quesObj.points}
+                filterDepartments={quesObj.filterDepartments}
+                values={formik.values.preguntas}
+                handleChange={formik.handleChange}
+                formik={formik}
+              />
+            ))}
+            <button type="submit" className="btnForm">
+              Enviar
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 };
 

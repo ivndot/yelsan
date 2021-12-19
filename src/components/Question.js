@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 //components
 import AnswerDpt from "./AnswerDpt";
-//nanoid
-import { nanoid } from "nanoid";
 //styles
 import "../css/Question.css";
 
@@ -135,7 +133,7 @@ const Question = (props) => {
   } = props;
 
   //get the array of all the possible points
-  const generatedValues = generateArrayOfValues(points);
+  const generatedValues = useMemo(() => generateArrayOfValues(points), [points]);
 
   //array of departments
   let departments = [];
@@ -152,9 +150,13 @@ const Question = (props) => {
   }
 
   //filter departments
-  const newDpts = departments.filter((dpt) => {
-    return !isDptInTheArray(dpt, filterDepartments);
-  });
+  const newDpts = useMemo(
+    () =>
+      departments.filter((dpt) => {
+        return !isDptInTheArray(dpt, filterDepartments);
+      }),
+    [departments]
+  );
 
   //React Hooks - ComponentDidMount
   useEffect(() => {
@@ -177,9 +179,9 @@ const Question = (props) => {
       <p className="question__paragraph">{question}</p>
       <p className="question__description">{description}</p>
       <div className="question__options">
-        {newDpts.map((dpt) => (
+        {newDpts.map((dpt, idx) => (
           <AnswerDpt
-            key={nanoid(10)}
+            key={idx}
             label={dpt}
             name={
               format1

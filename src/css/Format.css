@@ -1,6 +1,9 @@
-.format{
-    width: 85%;
-    height: auto;
-    margin: 20px auto;
-    /* background-color: antiquewhite; */
+.format {
+  z-index: 0;
+  width: 85%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 2.5rem;
+  padding-bottom: 8.5rem;
+  /* background-color: antiquewhite; */
 }

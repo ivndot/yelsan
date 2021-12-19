@@ -1,0 +1,36 @@
+.loadingContainer {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  /*flexbox*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingContainer--none {
+  display: none;
+}
+
+.loading {
+  width: 14.5rem;
+  min-width: 6.25rem;
+  height: 10.5rem;
+  min-height: 5rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: var(--background);
+  /*flexbox*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__message {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--fontFamilyTitle);
+  color: var(--colorFontLight);
+}
