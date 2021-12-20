@@ -1,10 +1,10 @@
 //firebase
 import db from "./firebase";
-import { addDoc, collection, query, getDocs } from "firebase/firestore";
+import { addDoc, collection, query, getDocs, getDoc, doc } from "firebase/firestore";
 
-const addFormat1Answers = async (formatAnswers) => {
+const addFormatAnswers = async (formatAnswers, formatNumber) => {
   try {
-    await addDoc(collection(db, "formato1"), formatAnswers);
+    await addDoc(collection(db, formatNumber), formatAnswers);
     console.log("format added");
   } catch (e) {
     console.error(e);
@@ -77,4 +77,24 @@ const getAllFormats = async () => {
   }
 };
 
-export { addFormat1Answers, getAllBranches, getAllFormats };
+/**
+ * Function to get the format values by its id
+ * @param {number} id The id of the document
+ * @param {string} formatNumber The format number in wich i want to do the query (colletion)
+ * @returns An object with the results
+ */
+const getFormatById = async (id, formatNumber) => {
+  let res = {};
+  try {
+    const snap = await getDoc(doc(db, formatNumber, id));
+    if (snap.exists()) {
+      res = { ...snap.data() };
+    }
+
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export { addFormatAnswers, getAllBranches, getAllFormats, getFormatById };

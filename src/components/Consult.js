@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 //firebase
-import { getAllBranches, getAllFormats } from "../util/requests";
+import { getAllBranches, getAllFormats, getFormatById } from "../util/requests";
 //components
 import FormatCard from "./FormatCard";
+import FormatViewer from "./FormatViewer";
 //styles
 import "../css/Consult.css";
 
-const Consult = (props) => {
+const Consult = () => {
   /**
    * State Hooks
    */
@@ -17,6 +18,7 @@ const Consult = (props) => {
   const [formats] = useState(["Formato 1", "Formato 2", "Formato 3"]);
   const [branches, setBranches] = useState([]);
   const [cards, setCards] = useState([]);
+  const [viewer, setViewer] = useState({ format: "", data: {} });
 
   //React Hooks - componentDidMount
   useEffect(() => {
@@ -100,60 +102,79 @@ const Consult = (props) => {
    * Function to view the result of the specified card
    * @param {number} id The id of the card
    */
-  const viewCard = (id) => {
-    console.log("ver card con el id: ", id);
+  const viewCard = async (id, format) => {
+    const formatNumber =
+      format === "Formato 1"
+        ? "formato1"
+        : format === "Formato 2"
+        ? "formato2"
+        : format === "Formato 3"
+        ? "formato3"
+        : "";
+    //make request to get the data of the specified card
+    const data = await getFormatById(id, formatNumber);
+
+    //update state
+    //set data and format type
+    setViewer({ format, data });
   };
 
   return (
-    <div className="containerConsult">
-      <div className="consult">
-        <h1 className="consult__title">Consulta de formatos</h1>
-        <p className="consult__description">
-          Consulta aqu&iacute; los formatos de las auditor&iacute;as realizadas.
-        </p>
-      </div>
-      <div className="filtersContainer">
-        <p className="filtersContainer__description">Filtrar por:</p>
-        <form className="filters" onSubmit={handleSubmit}>
-          {/* format filter */}
-          <Filter
-            name="format"
-            label="Formato:"
-            value={filters.format}
-            handleChange={handleChangeFormat}
-            options={formats}
-          />
-          {/* branch filter */}
-          <Filter
-            name="branch"
-            label="Sucursal:"
-            value={filters.branch}
-            handleChange={handleChangeBranch}
-            options={branches}
-          />
-          <button type="submit" className="btnFilter">
-            <i className="fas fa-filter btnFilter__icon"></i>
-            <span className="btnFilter__label">Filtrar</span>
-          </button>
-        </form>
-      </div>
-      <div className="cardsContainer">
-        {cards.length === 0 ? (
-          <div className="loadingCards">Cargando...</div>
-        ) : (
-          cards.map((card, idx) => (
-            <FormatCard
-              key={idx}
-              format={card.format}
-              branchName={card.nombreSucursal}
-              branchNum={card.noSucursal}
-              raiting={card.calificacionTotal}
-              viewCard={() => viewCard(card.id)}
-            />
-          ))
-        )}
-      </div>
-    </div>
+    <>
+      {viewer.format && Object.keys(viewer.data).length !== 0 ? (
+        <FormatViewer format={viewer.format} values={viewer.data} handleViewer={setViewer} />
+      ) : (
+        <div className="containerConsult">
+          <div className="consult">
+            <h1 className="consult__title">Consulta de formatos</h1>
+            <p className="consult__description">
+              Consulta aqu&iacute; los formatos de las auditor&iacute;as realizadas.
+            </p>
+          </div>
+          <div className="filtersContainer">
+            <p className="filtersContainer__description">Filtrar por:</p>
+            <form className="filters" onSubmit={handleSubmit}>
+              {/* format filter */}
+              <Filter
+                name="format"
+                label="Formato:"
+                value={filters.format}
+                handleChange={handleChangeFormat}
+                options={formats}
+              />
+              {/* branch filter */}
+              <Filter
+                name="branch"
+                label="Sucursal:"
+                value={filters.branch}
+                handleChange={handleChangeBranch}
+                options={branches}
+              />
+              <button type="submit" className="btnFilter">
+                <i className="fas fa-filter btnFilter__icon"></i>
+                <span className="btnFilter__label">Filtrar</span>
+              </button>
+            </form>
+          </div>
+          <div className="cardsContainer">
+            {cards.length === 0 ? (
+              <div className="loadingCards">Cargando...</div>
+            ) : (
+              cards.map((card, idx) => (
+                <FormatCard
+                  key={idx}
+                  format={card.format}
+                  branchName={card.nombreSucursal}
+                  branchNum={card.noSucursal}
+                  raiting={card.calificacionTotal}
+                  viewCard={() => viewCard(card.id, card.format)}
+                />
+              ))
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

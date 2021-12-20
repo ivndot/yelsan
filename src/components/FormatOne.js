@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useFormik } from "formik";
 //components
 import FormatHeader from "./FormatHeader";
 import Question from "./Question";
 import Section from "./Section";
 import Loading from "./Loading";
-import { addFormat1Answers } from "../util/requests";
+import { addFormatAnswers } from "../util/requests";
 import { generateQuestionObjects, generateFinalTime, getFinalRating } from "../util/util";
 //styles
 import "../css/Format.css";
@@ -338,6 +339,7 @@ const questionsSection3 = [
 const FormatOne = () => {
   //React Hook State
   const [isLoading, setIsLoading] = useState(false);
+  const [isDataSend, setIsDataSend] = useState(false);
 
   /**
    * Function to get the obtained points for each department
@@ -429,11 +431,13 @@ const FormatOne = () => {
     values.horaFinal = generateFinalTime();
 
     //set data to firebase
-    await addFormat1Answers(values);
+    await addFormatAnswers(values, "formato1");
 
     //update state
     setIsLoading(false);
 
+    //update state to redirect to consulta
+    setIsDataSend(true);
     console.log(values);
   };
 
@@ -445,6 +449,8 @@ const FormatOne = () => {
 
   return (
     <>
+      {/* redirec to consult */}
+      {isDataSend ? <Navigate replace to="/consulta" /> : null}
       {/* loading modal */}
       {isLoading ? (
         <Loading />

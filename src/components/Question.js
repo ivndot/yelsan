@@ -21,7 +21,7 @@ const objFormat1 = {
 const objFormat2 = {
   carnes: "Carnes",
   pym: "PyM",
-  slyc: "S, L y C",
+  slyc: "S L y C",
   frutasVerduras: "Frutas y verduras",
   panaderiaChocolateria: "Panadería y chocolatería",
   fteSodasAlimSelectoTacosSushi: "Fte. de Sodas / Alim. Selecto / Tacos y Sushi",
