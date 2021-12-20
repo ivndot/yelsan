@@ -14,7 +14,7 @@ const AnswerDpt = (props) => {
       </label>
       <select name={name} id={name} value={value} onChange={handleChange} className="answer__select">
         {optionValues.map((optionValue) => (
-          <option key={nanoid(3)} value={optionValue}>
+          <option key={nanoid(5)} value={optionValue}>
             {optionValue}
           </option>
         ))}

@@ -79,7 +79,41 @@ const questionsFormat2 = [
 ];
 
 //questions format 3
-const questionsFormat3 = [];
+const questionsFormat3 = [
+  "1.- ¿Están despejadas y desbloqueadas las Salidas de Emergencia?",
+  "2.- ¿Es posible Abrir la Salida de Emergencia en una única acción?",
+  "3.- ¿Están las salidas de emergencia señalizadas?",
+  "4.- ¿Las instalaciones tienen planos de evacuación actualizados y publicados?",
+  "5.- ¿Están las vías de escape hacia salidas de emergencia claramente señalizadas?",
+  "6.- ¿El Responsable de la tienda y sus reportes directos conocen el ancho libre mínimo que deben tener los pasillos de depósito/recepción para asegurar que las rutas de evacuación sean consideradas efectivamente libres?",
+  "7.- ¿Están los pasillos del depósito/recepción libres (respetar el ancho libre exigido por la legislación local. En caso de no existir legislación local al respecto respetar un ancho mínimo de 1,20m) de obstrucciones?",
+  "8.- ¿Están los extintores en su lugar y en buenas condiciones?",
+  "9.- ¿Están los extintores desbloqueados?",
+  "10.- ¿Están los extintores inspeccionados anualmente por una empresa externa especializada?",
+  "11.- ¿Son los extintores inspeccionados mensualmente?",
+  "12.- ¿Están los extintores adecuadamente señalizados?",
+  "13.- Realice una Prueba de Alarmas de Incendio: ¿Suenan las alarmas cuando son accionadas? (pruebe al menos un pulsador de aviso de incendio)",
+  "14.- ¿Están las bombas de incendio con el trablero de operación en modo automático?",
+  "15.- ¿Existe algún asociado capacitado para realizar la prueba de arranque automático de las bombas de incendio?",
+  "16.- Realizar prueba de arranque automático de las bombas de incendio: ¿Todas las bombas de incendio arrancan automáticamente al disminuir la presión de la instalación contra incendio?",
+  "17.- ¿Conoce el responsable de la tienda y sus reportes directos el Procedimiento de 'Fire Watch-Alerta de Incendio' y qué debe hacerse mientras dure este proceso?",
+  "18.- Están limpias las campanas de extracción y los conductos sobre los equipos de cocina (cocinas, hornos, freidoras, etc.)?",
+  "19.- ¿Se ha realizado por lo menos un simulacro de evacuación en los últimos 12 meses?",
+  "20.- ¿Saben los asociados qué hacer en caso de emergencia?",
+  "21.- ¿Las máquinas de producción y las compactadoras de basura y de cartón tienen las protecciones adecuadas y los dispositivos de seguridad de corte en buenas condiciones?",
+  "22.- ¿Se están utlizando en la tienda únicamente escaleras que cumplen con el estándar?",
+  "23.- ¿Los asociados están utilizando las escaleras en forma correcta?",
+  "24.- ¿Todos los dispositivos de seguridad para los hornos LPG están en su lugar y funcionan correctamente?",
+  "25.- ¿Son utilizados únicamente prolongadores eléctricos (Extensiones) aprobados, con protección eléctrica contra sobrecarga, los mismos están etiquetados con fecha de colocación que no supera los 90 días y están enchufados a un tomacorrientes de pared?",
+  "26.- ¿Todos los conductores de autoelevadores/montacargas (forklifts), tienen la licencia vigente y tiene la categoría autorizada del equipo que está manejando?",
+  "27.- ¿Se realiza la inspección diaria de seguridad de autoelevadores/montacarga (forklifts)?",
+  "28.- ¿Están los autoelevadores/montacargas (forklifts) en condiciones seguras de uso?",
+  "29.- ¿Se cuenta con brigadas de emergencia equipadas, conformadas, actualizadas y capacitadas y distribuidas de tal modo que quedan cubiertos los diferentes turnos de trabajo.?",
+  "30.- ¿Se cuenta con la revisión de la instalación de gas  de la unidad, efectuada por un externo de acuerdo a los requerimientos locales?",
+  "31.- ¿Se utilizan permisos para realizar trabajos peligrosos? (Trabajos en alturas, en caliente, en espacios confinados y bloqueo y candadeo)",
+  "32.- ¿Los asociados portan el EPP de acuerdo a su posición?",
+  "33.- ¿El protocolo de candadeo se aplica en la maquinaria de producción? (Panadería, Tortillería y carnicería)",
+];
 
 const FormatViewer = (props) => {
   const { format, values, handleViewer } = props;
@@ -160,7 +194,7 @@ const ViewerHeader = (props) => {
         </div>
         <div className="header">
           <p className="header__title">Nombre del AIS:</p>
-          <p className="header__value">values.nombreAIS</p>
+          <p className="header__value">{values.nombreAIS}</p>
         </div>
       </>
     );

@@ -45,7 +45,9 @@ const FormatHeader = (props) => {
 
   return (
     <div className="formatHeader">
-      <h1 className="formatHeader__title">Auditoria de seguridad alimentaria</h1>
+      <h1 className="formatHeader__title">
+        {props.format3 ? "Auditoría de seguridad e higiene" : "Auditoría de seguridad alimentaria"}
+      </h1>
       <p className="formatHeader__description">
         Proporciona toda la informaci&oacute;n solicitada, al terminar presiona el boton de enviar para
         guardar la informaci&oacute;n.
@@ -117,9 +119,9 @@ const FormatHeader = (props) => {
         <>
           <InputForm
             label="Determinante sucursal"
-            name="detSucursal"
+            name="determinante"
             placeHolder="Determinante sucursal..."
-            value={values.detSucursal}
+            value={values.determinante}
             handleChange={handleChange}
           />
           <InputForm
@@ -131,23 +133,23 @@ const FormatHeader = (props) => {
           />
           <InputForm
             label="Nombre de quien atiende la visita"
-            name="nombreVisita"
+            name="nombreAtiendeVisita"
             placeHolder="Esteban Camacho..."
-            value={values}
+            value={values.nombreAtiendeVisita}
             handleChange={handleChange}
           />
           <InputForm
             label="Cargo de quien atiende la visita"
-            name="cargoVisita"
+            name="cargoAtiendeVisita"
             placeHolder="Gerente..."
-            value={values}
+            value={values.cargoAtiendeVisita}
             handleChange={handleChange}
           />
           <InputForm
             label="Nombre del AIS"
             name="nombreAIS"
             placeHolder="Roberto Carlos..."
-            value={values}
+            value={values.nombreAIS}
             handleChange={handleChange}
           />
         </>

@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Consult from "./components/Consult";
 import FormatTwo from "./components/FormatTwo";
+import FormatThree from "./components/FormatThree";
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/formato1" element={<FormatOne />} />
           <Route path="/formato2" element={<FormatTwo />} />
-          <Route path="/formato3" element={<Home />} />
+          <Route path="/formato3" element={<FormatThree />} />
           <Route path="/consulta" element={<Consult />} />
         </Routes>
         <Navbar />

@@ -148,7 +148,7 @@ const Consult = () => {
                 label="Sucursal:"
                 value={filters.branch}
                 handleChange={handleChangeBranch}
-                options={branches}
+                options={["Selecciona", ...branches]}
               />
               <button type="submit" className="btnFilter">
                 <i className="fas fa-filter btnFilter__icon"></i>
@@ -165,7 +165,7 @@ const Consult = () => {
                   key={idx}
                   format={card.format}
                   branchName={card.nombreSucursal}
-                  branchNum={card.noSucursal}
+                  branchNum={card.format === "Formato 3" ? card.determinante : card.noSucursal}
                   raiting={card.calificacionTotal}
                   viewCard={() => viewCard(card.id, card.format)}
                 />
