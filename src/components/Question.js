@@ -150,13 +150,9 @@ const Question = (props) => {
   }
 
   //filter departments
-  const newDpts = useMemo(
-    () =>
-      departments.filter((dpt) => {
-        return !isDptInTheArray(dpt, filterDepartments);
-      }),
-    [departments]
-  );
+  const newDpts = departments.filter((dpt) => {
+    return !isDptInTheArray(dpt, filterDepartments);
+  });
 
   //React Hooks - ComponentDidMount
   useEffect(() => {

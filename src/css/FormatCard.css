@@ -1,0 +1,80 @@
+.card {
+  width: 100%;
+  height: auto;
+  font-family: var(--fontFamilyTitle);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+  /*flexbox*/
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+.card:hover {
+  cursor: pointer;
+  transition: ease 0.2s;
+  box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.2);
+}
+
+.card__details {
+  flex: 1;
+  width: auto;
+  height: auto;
+}
+
+.details__format {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorFont);
+  padding-bottom: 0.1rem;
+}
+
+.details__branchName {
+  font-size: 0.8rem;
+  color: var(--colorFontLight);
+  padding-bottom: 0.1rem;
+}
+
+.details__branchNum {
+  font-size: 0.7rem;
+  color: var(--colorFontLight);
+}
+
+.card__raiting {
+  width: auto;
+  height: auto;
+  /*flexbox*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.raiting__status {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.status--green {
+  background-color: rgb(48, 192, 43);
+}
+
+.status--yellow {
+  background-color: rgb(231, 199, 17);
+}
+
+.status--red {
+  background-color: rgb(212, 36, 36);
+}
+
+.raiting__percent {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--colorFont);
+  margin-left: 10px;
+}

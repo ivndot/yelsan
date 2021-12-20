@@ -1,0 +1,119 @@
+.containerConsult {
+  width: 85%;
+  height: auto;
+  margin: 1.25rem auto;
+  /* background-color: rosybrown; */
+}
+
+.consult {
+  width: 100%;
+  height: auto;
+}
+
+.consult__title {
+  font-size: 2.5rem;
+  font-family: var(--fontFamilyTitle);
+  font-weight: 300;
+  text-align: center;
+  color: var(--colorFontTitle);
+  margin-bottom: 0.8rem;
+}
+
+.consult__description {
+  font-size: 1.2rem;
+  line-height: 1.75rem;
+  text-align: justify;
+  color: var(--colorFontLight);
+  margin-bottom: 0.8rem;
+}
+
+.filtersContainer {
+  width: 100%;
+  height: auto;
+}
+
+.filtersContainer__description {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorFontLight);
+  margin-bottom: 0.8rem;
+}
+
+.filters {
+  width: 100%;
+  height: auto;
+  /*flexbox*/
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: salmon; */
+}
+
+.filter {
+  margin-bottom: 0.8rem;
+  /*flexbox*/
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: royalblue; */
+}
+
+.filter__label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 0.1rem;
+}
+
+.filter__select {
+  min-width: 8.13rem;
+  min-height: 1.88rem;
+  border: 1.5px solid white;
+  outline: none;
+  border-radius: 0.4rem;
+  background-color: white;
+}
+
+.filter__select:focus {
+  transition: ease 0.2s;
+  border: 1.5px solid var(--accent);
+}
+
+.btnFilter {
+  width: 100%;
+  min-height: 1.88rem;
+  height: auto;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  background-color: var(--accent);
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+  color: var(--colorFontLight);
+}
+
+.btnFilter:hover {
+  color: white;
+  background-color: var(--primary);
+}
+
+.btnFilter__icon {
+  margin-right: 0.7rem;
+}
+
+.btnFilter__label {
+  font-weight: 500;
+}
+
+.cardsContainer {
+  margin-top: 2.5rem;
+  margin-bottom: 8.5rem;
+}
+
+.loadingCards {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--colorFont);
+}
