@@ -1,9 +1,8 @@
 .format {
   z-index: 0;
-  width: 85%;
+  max-width: 450px;
   height: auto;
   margin: 0 auto;
-  padding-top: 2.5rem;
-  padding-bottom: 8.5rem;
-  /* background-color: antiquewhite; */
+  padding: 2.5rem 1rem 8.5rem 1rem;
+  background-color: var(--background);
 }
